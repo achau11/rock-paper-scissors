@@ -10,19 +10,13 @@
     <script>  
         // the main function that plays the game 
         function playGame(){
-            let counter = 0;
-            let playerWin = 0;
-            let computerWin = 0;
-            let playerSelection;
-            let computerSelection;
-            let result;
-            
+            let playerSelection, computerSelection, result;
+            let counter, playerWin, computerWin = 0;
             // play five rounds of the game, player prompted every round, and computer makes new selection.
             while (counter < 5){
                 playerSelection = prompt("Make a selection: Rock, Paper, Scissors?").toUpperCase();
                 computerSelection = computerPlay();
                 result = playRound(playerSelection, computerSelection);
-                
                 // keep track of player/computer wins
                 if (result.includes("Win")){
                     playerWin++;
@@ -33,7 +27,6 @@
                 else {
                     playerWin++; computerWin++;
                 }
-                
                 // display output
                 console.log("Round: " +(counter + 1));
                 console.log("Computer chose: " +computerSelection +" and you chose " +playerSelection+ ".");
@@ -44,11 +37,9 @@
                 counter++;
             }
         }
-        
         // computer selects their move randomly
         function computerPlay() {
             let number = Math.floor(Math.random() * 3);
-            
             switch (number){
                 case 0:
                     return "ROCK";
@@ -58,13 +49,11 @@
                     return "SCISSORS";
             }
         }
-        
         // one round of gameplay
         function playRound(playerSelection, computerSelection) {
             if (computerSelection == playerSelection){
                 return playerSelection+ " & " +computerSelection+ " are equal! Round tied!";
             }
-            
             else if (computerSelection == "ROCK"){
                 switch (playerSelection){
                     case "PAPER":
@@ -73,7 +62,6 @@
                         return "Rock beats Scissors, You Lose!";
                 }
             }
-            
             else if (computerSelection == "PAPER"){
                 switch (playerSelection){
                     case "SCISSORS":
@@ -82,7 +70,6 @@
                         return "Paper beats Rock, You Lose!";
                 }
             }
-
             else if (computerSelection == "SCISSORS"){
                 switch (playerSelection){
                     case "PAPER":
@@ -92,10 +79,8 @@
                 }
             }
         }
-        
         // Start Game
-        playGame();
-        
+        playGame();  
     </script>
 </body>
 </html>
