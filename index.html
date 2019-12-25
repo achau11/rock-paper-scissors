@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Rock Paper Scissors Game</title>
+</head>
+<body>
+    <script>   
+        function computerPlay() {
+            let number = Math.floor(Math.random() * 3);
+            
+            switch (number){
+                case 0:
+                    return "ROCK";
+                case 1:
+                    return "PAPER";
+                case 2:
+                    return "SCISSORS";
+            }
+        }
+
+        function playRound(playerSelection, computerSelection) {
+            if (computerSelection == playerSelection){
+                return playerSelection+ " & " +computerSelection+ " are equal! Round tied!";
+            }
+            
+            else if (computerSelection == "ROCK"){
+                switch (playerSelection){
+                    case "PAPER":
+                        return "Paper beats Rock, You Win!";
+                    case "SCISSORS":
+                        return "Rock beats Scissors, You Lose!";
+                }
+            }
+            
+            else if (computerSelection == "PAPER"){
+                switch (playerSelection){
+                    case "SCISSORS":
+                        return "Scissors beat Paper, You Win!";
+                    case "ROCK":
+                        return "Paper beats Rock, You Lose!";
+                }
+            }
+
+            else if (computerSelection == "SCISSORS"){
+                switch (playerSelection){
+                    case "PAPER":
+                        return "Scissors beat Paper, You Lose!";
+                    case "ROCK":
+                        return "Rock beats Scissors, You Win!";
+                }
+            }
+        }
+
+        let playerSelection = prompt("Make a selection: Rock, Paper, Scissors?").toUpperCase();
+        let computerSelection = computerPlay();
+
+        console.log("Computer chose: " +computerSelection +" and you chose " +playerSelection+ ".");
+        console.log(playRound(playerSelection, computerSelection));
+        
+
+    </script>
+</body>
+</html>
