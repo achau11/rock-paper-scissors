@@ -7,7 +7,45 @@
     <title>Rock Paper Scissors Game</title>
 </head>
 <body>
-    <script>   
+    <script>  
+        // the main function that plays the game 
+        function playGame(){
+            let counter = 0;
+            let playerWin = 0;
+            let computerWin = 0;
+            let playerSelection;
+            let computerSelection;
+            let result;
+            
+            // play five rounds of the game, player prompted every round, and computer makes new selection.
+            while (counter < 5){
+                playerSelection = prompt("Make a selection: Rock, Paper, Scissors?").toUpperCase();
+                computerSelection = computerPlay();
+                result = playRound(playerSelection, computerSelection);
+                
+                // keep track of player/computer wins
+                if (result.includes("Win")){
+                    playerWin++;
+                }
+                else if (result.includes("Lose")){
+                    computerWin++;
+                }
+                else {
+                    playerWin++; computerWin++;
+                }
+                
+                // display output
+                console.log("Round: " +(counter + 1));
+                console.log("Computer chose: " +computerSelection +" and you chose " +playerSelection+ ".");
+                console.log(result);
+                console.log("Player: " +playerWin+ " Computer: " +computerWin);
+                console.log("");
+
+                counter++;
+            }
+        }
+        
+        // computer selects their move randomly
         function computerPlay() {
             let number = Math.floor(Math.random() * 3);
             
@@ -20,7 +58,8 @@
                     return "SCISSORS";
             }
         }
-
+        
+        // one round of gameplay
         function playRound(playerSelection, computerSelection) {
             if (computerSelection == playerSelection){
                 return playerSelection+ " & " +computerSelection+ " are equal! Round tied!";
@@ -53,14 +92,10 @@
                 }
             }
         }
-
-        let playerSelection = prompt("Make a selection: Rock, Paper, Scissors?").toUpperCase();
-        let computerSelection = computerPlay();
-
-        console.log("Computer chose: " +computerSelection +" and you chose " +playerSelection+ ".");
-        console.log(playRound(playerSelection, computerSelection));
         
-
+        // Start Game
+        playGame();
+        
     </script>
 </body>
 </html>
