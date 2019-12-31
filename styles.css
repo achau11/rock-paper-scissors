@@ -1,3 +1,4 @@
+
 a {
     text-decoration: none;
     color: white;
@@ -17,14 +18,32 @@ a:hover{
 .rock, .paper, .scissors{
     display: inline-block;
     padding: 140px;
-    border: black solid 2px;
     text-align: center;
     background-color: #ffffff;
     border-radius: 25px;
+    transition: 0.1s; 
 }
 
 .paper{
     margin: 0 25px;
+}
+
+.rock:hover {
+    color: rgb(175, 12, 12);
+    border: rgb(175, 12, 12) solid 4px;
+    cursor: pointer;
+}
+
+.paper:hover {
+    color: rgb(175, 12, 12);
+    border: rgb(175, 12, 12) solid 4px;
+    cursor: pointer;
+}
+
+.scissors:hover {
+    color: rgb(175, 12, 12);
+    border: rgb(175, 12, 12) solid 4px;
+    cursor: pointer;
 }
 
 img{
