@@ -10,20 +10,26 @@
 <body>
     <h1><a href="index.html">Rock Paper & Scissors Game</a></h1>
     
-    <div class = "playerChoices">
-        <div class="rock">
+    <div class = "choice">
+        <div class="block" id="rock">
             <h2>Rock</h2>
             <img src="images/rock.jpg" alt="Rock">
         </div>
-        <div class="paper">
+        <div class="block" id="paper">
             <h2>Paper</h2>
             <img src="images/paper.jpg" alt="Paper">
         </div>
-        <div class="scissors">
+        <div class="block" id="scissors">
             <h2>Scissors</h2>
             <img src="images/scissors.jpg" alt="scissors">
         </div>
     </div>
-    <script></script>
+
+    <div class="results">
+        <h2 id = 'you'>YOU: </h2>
+        <h2 id = 'computer'>COMPUTER: </h2>
+        <h2 id = 'draw'>DRAW</h2>
+    </div>
+    <script src="scripts.js"></script>
 </body>
 </html>

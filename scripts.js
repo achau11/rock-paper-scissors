@@ -1,26 +1,119 @@
-       // the main function that plays the game 
-       function playGame(){
-        let playerSelection, computerSelection, result;
-        let counter, playerWin, computerWin = 0;
-    
-        // display output
-            console.log("Round: " +(counter + 1));
-            console.log("Computer chose: " +computerSelection +" and you chose " +playerSelection+ ".");
-            console.log(result);
-            console.log("Player: " +playerWin+ " Computer: " +computerWin);
-            console.log("");
-    }
-   
+
     //event listener
-        let rock = document.querySelector('.rock');
-        let paper = document.querySelectio('.paper');
-        let scissors = document.querySelectio('.scissors');
+        let rock = document.querySelector('#rock');
+        let paper = document.querySelector('#paper');
+        let scissors = document.querySelector('#scissors');
 
-        rock.addEventListener('click, playRound()');
-        paper.addEventListener('click, playRound(.paper)');
-        scissors.addEventListener('click, playRound(.scissors)');
+        //CASE: ROCK
+        rock.addEventListener('click', function(e){
+            // change heading on click
+            const heading = document.querySelector('#rock h2');
+            heading.textContent = 'YOU CHOSE: ROCK';
 
+            // remove other choices
+            paper.parentNode.removeChild(paper);
+            scissors.parentNode.removeChild(scissors);
 
+            // create new computer choice block
+            
+            let computerSelection = computerPlay(); // Get the computer selection.
+            const computerChoice = document.createElement('div');
+            const choice = document.querySelector('.choice');
+
+            computerChoice.classList.add('block');
+            choice.appendChild(computerChoice);
+
+            // add heading to the computer choice block
+            const headingComp = document.createElement('h2');
+            headingComp.textContent = 'COMPUTER CHOSE: ' +computerSelection;
+            computerChoice.appendChild(headingComp);
+
+            // Create a result block and return the heading as a string
+            const result = document.createElement('div');
+            result.classList.add('block');
+            choice.appendChild(result);
+
+            const headingResult = document.createElement('h2');
+            headingResult.textContent = playRound('ROCK', computerSelection);
+            result.appendChild(headingResult); 
+            
+            return headingResult;  
+        }, {once : true});
+
+        //CASE: PAPER
+        paper.addEventListener('click', function(e){
+            // change heading on click
+            const heading = document.querySelector('#paper h2');
+            heading.textContent = 'YOU CHOSE: PAPER';
+
+            // remove other choices
+            rock.parentNode.removeChild(rock);
+            scissors.parentNode.removeChild(scissors);
+
+            // create new computer choice block
+            
+            let computerSelection = computerPlay(); // Get the computer selection.
+            const computerChoice = document.createElement('div');
+            const choice = document.querySelector('.choice');
+
+            computerChoice.classList.add('block');
+            choice.appendChild(computerChoice);
+
+            // add heading to the computer choice block
+            const headingComp = document.createElement('h2');
+            headingComp.textContent = 'COMPUTER CHOSE: ' +computerSelection;
+            computerChoice.appendChild(headingComp);
+
+            // Create a result block
+            const result = document.createElement('div');
+            result.classList.add('block');
+            choice.appendChild(result);
+
+            const headingResult = document.createElement('h2');
+            headingResult.textContent = playRound('PAPER', computerSelection);
+            result.appendChild(headingResult); 
+            
+            return headingResult; 
+        }, {once : true});
+        
+        //CASE: SCISSORS
+        scissors.addEventListener('click', function(e){
+            // change heading on click
+            const heading = document.querySelector('#scissors h2');
+            heading.textContent = 'YOU CHOSE: SCISSORS';
+
+            // remove other choices
+            paper.parentNode.removeChild(paper);
+            rock.parentNode.removeChild(rock);
+
+            // create new computer choice block
+            
+            let computerSelection = computerPlay(); // Get the computer selection.
+            const computerChoice = document.createElement('div');
+            const choice = document.querySelector('.choice');
+
+            computerChoice.classList.add('block');
+            choice.appendChild(computerChoice);
+
+            // add heading to the computer choice block
+            const headingComp = document.createElement('h2');
+            headingComp.textContent = 'COMPUTER CHOSE: ' +computerSelection;
+            computerChoice.appendChild(headingComp);
+
+            // Create a result block
+            const result = document.createElement('div');
+            result.classList.add('block');
+            choice.appendChild(result);
+
+            const headingResult = document.createElement('h2');
+            headingResult.textContent = playRound('SCISSORS', computerSelection);
+            result.appendChild(headingResult); 
+
+            return headingResult; 
+        }, {once : true});
+    
+
+    
     // computer selects their move randomly
      function computerPlay() {
         let number = Math.floor(Math.random() * 3);
@@ -65,5 +158,3 @@
             }
         }
     }
-    // Start Game
-    playGame();  
